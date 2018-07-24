@@ -1,6 +1,6 @@
 set(testing_dir "${CDash_SOURCE_DIR}/tests")
 set(binary_testing_dir "${CDash_BINARY_DIR}/tests")
-set(laravel_root "${CDash_BINARY_DIR}/../../..")
+set(laravel_root "${CDash_SOURCE_DIR}/../..")
 set(PHPUNIT "${CDash_SOURCE_DIR}/vendor/bin/phpunit")
 
 # function to add a new PHP based coverage test to CDash
@@ -62,7 +62,6 @@ add_php_test(createpublicdashboard)
 # add_php_test(email)
 add_laravel_integration_test(EmailProjectTest)
 add_php_test(projectwebpage)
-# add_php_test(subproject)
 add_laravel_integration_test(SubprojectTest)
 add_php_test(actualtrilinossubmission)
 
