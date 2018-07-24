@@ -30,12 +30,20 @@ function(add_unit_test TestName)
     NAME ${TestName}
     COMMAND ${PHP_EXE} ${phpunit_extra_arg} ${PHPUNIT} -c ${testing_dir}/phpunit.xml ${testing_dir}/case/${TestName}Test.php
   )
+  set_tests_properties(
+      ${TestName} PROPERTIES
+      FAIL_REGULAR_EXPRESSION ".*Failures: [1-9]+.*;.*Exceptions: [1-9]+.*"
+    )
 endfunction(add_unit_test TestName)
 function(add_laravel_integration_test TestName)
   add_test(
     NAME ${TestName}
     COMMAND ${PHP_EXE} ${phpunit_extra_arg} ${laravel_root}/vendor/bin/phpunit -c ${laravel_root}/phpunit.xml ${laravel_root}/tests/integration/${TestName}.php
   )
+  set_tests_properties(
+      ${TestName} PROPERTIES
+      FAIL_REGULAR_EXPRESSION ".*error;.*Failures: [1-9]+.*;.*Exceptions: [1-9]+.*"
+    )
 endfunction(add_laravel_integration_test)
 # phpunit tests
 set(phpunit_extra_arg "")
